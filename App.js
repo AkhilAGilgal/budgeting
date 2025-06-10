@@ -2,11 +2,14 @@ const { useState, useEffect } = React;
 
 
 function App() {
-    const [budget, setBudget] = useState(2000);
+    
+    const currency = '₹';
+
+    const [budget, setBudget] = useState(200000); 
     const [expenses, setExpenses] = useState([
-        { id: 1, name: 'Groceries', cost: 50 },
-        { id: 2, name: 'Gas', cost: 40 },
-        { id: 3, name: 'Shopping', cost: 100 }
+        { id: 1, name: 'Groceries', cost: 4000 },
+        { id: 2, name: 'Rent', cost: 15000 },
+        { id: 3, name: 'Shopping', cost: 5000 }
     ]);
     const [name, setName] = useState('');
     const [cost, setCost] = useState('');
@@ -43,29 +46,29 @@ function App() {
             <div className="row">
                 <div className="col-md">
                     <div className="alert alert-secondary">
-                        <span>Budget: ${budget}</span>
+                        <span>Budget: {currency}{budget}</span>
                     </div>
                 </div>
                 <div className="col-md">
                     <div className="alert alert-success">
-                        <span>Remaining: ${remaining}</span>
+                        <span>Remaining: {currency}{remaining}</span>
                     </div>
                 </div>
                 <div className="col-md">
                     <div className="alert alert-primary">
-                        <span>Spent so far: ${totalExpenses}</span>
+                        <span>Spent so far: {currency}{totalExpenses}</span>
                     </div>
                 </div>
             </div>
 
-            {/* Expense List */}
+            {}
             <h3 className="mt-3">Expenses</h3>
             <ul className="list-group">
                 {expenses.map((expense) => (
                     <li key={expense.id} className="list-group-item d-flex justify-content-between align-items-center">
                         {expense.name}
                         <div>
-                            <span className="badge bg-primary rounded-pill me-3">${expense.cost}</span>
+                            <span className="badge bg-primary rounded-pill me-3">{currency}{expense.cost}</span>
                             <button className="btn-close" onClick={() => deleteExpense(expense.id)}></button>
                         </div>
                     </li>
